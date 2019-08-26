@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>IT'S A PRESENT</title>
-    <description>Hello! I'm Halley, it's a blog to report some technology news and life presentations.</description>
-    <link>http://localhost:4001/</link>
-    <atom:link href="http://localhost:4001/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 26 Aug 2019 15:24:50 +0800</pubDate>
-    <lastBuildDate>Mon, 26 Aug 2019 15:24:50 +0800</lastBuildDate>
+    <title>oovoo</title>
+    <description>FINE</description>
+    <link>http://localhost:4002/</link>
+    <atom:link href="http://localhost:4002/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Mon, 26 Aug 2019 19:57:17 +0800</pubDate>
+    <lastBuildDate>Mon, 26 Aug 2019 19:57:17 +0800</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
     
       <item>
@@ -14,8 +14,6 @@
         <description>&lt;h1 id=&quot;泰坦尼克号生存者预测作业文档&quot;&gt;泰坦尼克号生存者预测作业文档&lt;/h1&gt;
 
 &lt;p&gt;1511415		樊文杰	软件工程&lt;/p&gt;
-
-&lt;hr /&gt;
 
 &lt;h3 id=&quot;1-任务描述&quot;&gt;1.	任务描述&lt;/h3&gt;
 
@@ -363,8 +361,8 @@ cost = tf.add_n(tf.get_collection('losses'))    #加入正则化参数
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 10 Jun 2018 19:50:00 +0800</pubDate>
-        <link>http://localhost:4001/2018/06/10/Titanic/</link>
-        <guid isPermaLink="true">http://localhost:4001/2018/06/10/Titanic/</guid>
+        <link>http://localhost:4002/2018/06/10/Titanic/</link>
+        <guid isPermaLink="true">http://localhost:4002/2018/06/10/Titanic/</guid>
         
         <category>Machine Learning</category>
         

@@ -6,20 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Hello! I'm Halley, it's a blog to report some technology news and life presentations.">
-    <meta name="keywords"  content="Halley">
+    <meta name="description" content="FINE">
+    <meta name="keywords"  content="PhD, Future">
     <meta name="theme-color" content="#000000">
     
-    <title>Halley's present</title>
+    <title>For the Present</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <!-- Safari Webpage Icon    by-BY -->
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4001/404.html">
+    <link rel="canonical" href="http://localhost:4002/404.html">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -56,7 +59,7 @@
 
 
 <!-- hack iOS CSS :active style -->
-<body ontouchstart="" style="background-color: 	#E6E6FA">
+<body ontouchstart="">
 
     <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -69,7 +72,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">IT'S A PRESENT</a>
+            <a class="navbar-brand" href="/">oovoo</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -79,7 +82,7 @@
                     <li>
                         <a href="/">Home</a>
                     </li>
-                    <!-- 
+                    
                     <li>
                         <a href="/about/">About</a>
                     </li>
@@ -87,10 +90,7 @@
                     <li>
                         <a href="/tags/">Tags</a>
                     </li>
-                     -->
-                    <li>
-                        <a href="/tags/">Categories</a>
-                    </li>
+                    
                 </ul>
             </div>
         </div>
@@ -159,7 +159,7 @@
 			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 				<div class="site-heading" id="tag-heading">
 					<h1>404</h1>
-					<span class="subheading">你来到了没有知识的荒原 :(</span>
+					<span class="subheading">你来到了没有知识的荒原 🙊</span>
 				</div>
 			</div>
 		</div>
@@ -178,6 +178,8 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <ul class="list-inline text-center">
                     
+                    <!-- add jianshu add target = "_blank" to <a> by BY -->
+                    
                     
 
                     <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
@@ -190,9 +192,14 @@
                     
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; IT'S A PRESENT 2019
+                    Copyright &copy; oovoo 2019
                     <br>
-                    Theme by Halley</a>
+                    Theme on <a href="https://github.com/banshee1/banshee1.github.com">GitHub</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=&repo=.github.io&type=star&count=true" >
+                    </iframe>
                 </p>
             </div>
         </div>
@@ -203,7 +210,6 @@
 <script src="/js/jquery.min.js "></script>
 
 <!-- Bootstrap Core JavaScript -->
-<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
 <script src="/js/bootstrap.min.js "></script>
 
 <!-- Custom Theme JavaScript -->
@@ -211,8 +217,16 @@
 
 <!-- Service Worker -->
 
-<script src="/js/snackbar.js "></script>
-<script src="/js/sw-registration.js "></script>
+<script type="text/javascript">
+    if(navigator.serviceWorker){
+        // For security reasons, a service worker can only control the pages that are in the same directory level or below it. That's why we put sw.js at ROOT level.
+        navigator.serviceWorker
+            .register('/sw.js')
+            .then((registration) => {console.log('Service Worker Registered. ', registration)})
+            .catch((error) => {console.log('ServiceWorker registration failed: ', error)})
+    }
+</script>
+
 
 
 <!-- async load function -->
@@ -227,15 +241,15 @@
     }
 </script>
 
-<!--
-     Because of the native support for backtick-style fenced code blocks
-     right within the Markdown is landed in Github Pages,
-     From V1.6, There is no need for Highlight.js,
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
      so Huxblog drops it officially.
 
-     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
-     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
-     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/ 
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers   
 -->
 <!--
     <script>
@@ -272,24 +286,10 @@
 
 <!-- Google Analytics -->
 
-<script>
-    // dynamic User by Hux
-    var _gaId = 'UA-49627206-1';
-    var _gaDomain = '';
-
-    // Originial
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', _gaId, _gaDomain);
-    ga('send', 'pageview');
-</script>
-
 
 
 <!-- Baidu Tongji -->
+
 
 
 
@@ -297,13 +297,10 @@
 
 
 
-<!-- Multi-Lingual -->
-
-
 
 
 <!-- Image to hack wechat -->
-<img src="/img/icon_wechat.png" width="0" height="0" />
+<img src="/img/apple-touch-icon.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>

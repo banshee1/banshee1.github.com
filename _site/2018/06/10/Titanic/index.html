@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Hello! I'm Halley, it's a blog to report some technology news and life presentations.">
+    <meta name="keywords"  content="Halley">
+    <meta name="theme-color" content="#000000">
+    
+    <title>泰坦尼克号生存者预测 - Halley's present</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4001/2018/06/10/Titanic/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" style="background-color: 	#E6E6FA">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">IT'S A PRESENT</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <!-- 
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                     -->
+                    <li>
+                        <a href="/tags/">Categories</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/categories-bg.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/categories-bg.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#Machine Learning" title="Machine Learning">Machine Learning</a>
+                        
+                    </div>
+                    <h1>泰坦尼克号生存者预测</h1>
+                    
+                    
+                    <h2 class="subheading">Tensorflow</h2>
+                    
+                    <span class="meta">Posted by Halley on June 10, 2018</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <!-- Multi-Lingual -->
+                
+
+				<h1 id="泰坦尼克号生存者预测作业文档">泰坦尼克号生存者预测作业文档</h1>
+
+<p>1511415		樊文杰	软件工程</p>
+
+<hr />
+
+<h3 id="1-任务描述">1.	任务描述</h3>
+
+<p>​            在kaggle的网站上可以下载训练数据train.csv和测试数据test.csv，利用train.csv中的乘客数据来训练自己的模型，然后预测test.csv中乘客的生存情况。</p>
+
+<hr />
+
+<h3 id="2-实验环境">2.	实验环境</h3>
+
+<ul>
+  <li>
+    <p>语言: 	Python3.6</p>
+  </li>
+  <li>
+    <p>主要使用的包:      pandas, numpy, tensorflow,sklearn</p>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="3-数据分析">3.	数据分析</h3>
+
+<ul>
+  <li>
+    <p><strong>Survived</strong>：是否存活（0代表否，1代表是）</p>
+  </li>
+  <li>
+    <p><strong>Pclass</strong>：社会阶级（1代表上层阶级，2代表中层阶级，3代表底层阶级）</p>
+  </li>
+  <li>
+    <p><strong>Name</strong>：船上乘客的名字</p>
+  </li>
+  <li>
+    <p><strong>Sex</strong>：船上乘客的性别</p>
+  </li>
+  <li>
+    <p><strong>Age</strong>:  船上乘客的年龄（可能存在 <code class="highlighter-rouge">NaN</code>）</p>
+  </li>
+  <li>
+    <p><strong>SibSp</strong>：乘客在船上的兄弟姐妹和配偶的数量</p>
+  </li>
+  <li>
+    <p><strong>Parch</strong>：乘客在船上的父母以及小孩的数量</p>
+  </li>
+  <li>
+    <p><strong>Ticket</strong>：乘客船票的编号</p>
+  </li>
+  <li>
+    <p><strong>Fare</strong>：乘客为船票支付的费用</p>
+  </li>
+  <li>
+    <p><strong>Cabin</strong>：乘客所在船舱的编号（可能存在 <code class="highlighter-rouge">NaN</code>）</p>
+  </li>
+  <li>
+    <p><strong>Embarked</strong>：乘客上船的港口（C 代表从 Cherbourg 登船，Q 代表从 Queenstown 登船，S 代表从 Southampton 登船）</p>
+
+    <p>​	以上即为train.csv中所包含的数据，其中可以看出存在部分列是无法直接用于计算的，所以我们需要对原始的数据进行加工。利用pandas.read_csv读取数据并进行统计:</p>
+
+    <p>​</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+  
+<span class="n">train_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'train.csv'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">train_data</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+</code></pre></div>    </div>
+
+    <p>​</p>
+
+    <p>​	然后就会得到以下结果:</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RangeIndex: 891 entries, 0 to 890
+Data columns (total 12 columns):
+PassengerId    891 non-null int64
+Survived       891 non-null int64
+Pclass         891 non-null int64
+Name           891 non-null object
+Sex            891 non-null object
+Age            714 non-null float64
+SibSp          891 non-null int64
+Parch          891 non-null int64
+Ticket         891 non-null object
+Fare           891 non-null float64
+Cabin          204 non-null object
+Embarked       889 non-null object
+dtypes: float64(2), int64(5), object(5)
+memory usage: 83.6+ KB
+None
+</code></pre></div>    </div>
+
+    <p>​	数据的Cabin列缺失过于严重，所以在训练模型时选择舍掉这一列。而对于Age列，见下图：</p>
+  </li>
+</ul>
+
+<p><img src="C:\Users\banshee\Desktop\ML\v2-23facc53c6559952e0137e809656831f_r.jpg" width="450px" height="400px" /></p>
+
+<p>​	 						图1:  性别对生存结果影响的统计图</p>
+
+<p>​		由数据的统计图来看，Age列对生存结果的影响是不能忽略的，但是由于缺失量也不在少数，所以简单的用平均年龄填充空缺值可能并不是一个好的解决办法。最后选择利用随机森林算法来补全年龄的空缺值.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">age</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[[</span><span class="s">'Age'</span><span class="p">,</span><span class="s">'Survived'</span><span class="p">,</span><span class="s">'Fare'</span><span class="p">,</span><span class="s">'Parch'</span><span class="p">,</span><span class="s">'SibSp'</span><span class="p">,</span><span class="s">'Pclass'</span><span class="p">]]</span>
+<span class="n">age_notnull</span> <span class="o">=</span> <span class="n">age</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">dataset</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">notnull</span><span class="p">())]</span>
+<span class="n">age_isnull</span> <span class="o">=</span> <span class="n">age</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">dataset</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">isnull</span><span class="p">())]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">age_notnull</span><span class="o">.</span><span class="n">values</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">age_notnull</span><span class="o">.</span><span class="n">values</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">rfr</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">rfr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+<span class="n">predictAges</span> <span class="o">=</span> <span class="n">rfr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">age_isnull</span><span class="o">.</span><span class="n">values</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:])</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">dataset</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">isnull</span><span class="p">()),</span><span class="s">'Age'</span><span class="p">]</span> <span class="o">=</span> <span class="n">predictAges</span>
+</code></pre></div></div>
+
+<p>​		其他列的空缺选择用众数或者平均数填充。</p>
+
+<hr />
+
+<h3 id="4-算法选择和特征处理">4.	算法选择和特征处理</h3>
+
+<h4 id="41--算法选择">4.1  算法选择</h4>
+
+<p>​		在选择实现算法时，我主要考虑过<strong>随机森林</strong>和<strong>神经网络</strong>。经过初步的对比实验，我认为神经网络的可调</p>
+
+<p>​	节空间更大而且初步效果比较好，所以我选择了用tensorflow搭建一个简单的network。模型图如下:</p>
+
+<p><img src="C:\Users\banshee\Desktop\ML\model.png" width="400px" height="300px" /></p>
+
+<p>​		由于数据复杂度并不高，所以采用双层即可。</p>
+
+<h4 id="42-特征处理">4.2	特征处理</h4>
+
+<p>​		对于特征的处理，主要有两种:</p>
+
+<p>​			(1)	连续值保持不变，表示类型的值转换成one-hot-array。</p>
+
+<p>​			(2)	类型值用整数标识。</p>
+
+<p>​		上述两种方法，都是将训练数据转换成矩阵放入到network中。其中one-hot-array版本实现在onehot.py中，整数表示类别版本实现在titanic.py中。<strong>而实验结果表明，one-hot-array实现的算法效果要</strong></p>
+
+<p><strong>稍稍地好于映射到整数的算法。</strong></p>
+
+<h5 id="421-代表类型的属性">4.2.1	代表类型的属性</h5>
+
+<p>​			包括Pclass, Sex, Embarked这几列。按照上述所说，若映射到整数，则实现很简单。</p>
+
+<p>​		而在转变为ont-hot-array时，则利用sklearn中封装的函数来实现:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span><span class="p">,</span> <span class="n">OneHotEncoder</span>
+<span class="n">labelencoder_X_1</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">X_train</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">labelencoder_X_1</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">X_train</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">labelencoder_X_1</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">X_train</span><span class="p">[:,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">labelencoder_X_1</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">[:,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">X_train</span><span class="p">[:,</span> <span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">labelencoder_X_1</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">[:,</span> <span class="mi">6</span><span class="p">])</span>
+
+<span class="n">labelencoder_X_2</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">X_test</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">labelencoder_X_2</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">X_test</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">labelencoder_X_2</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">X_test</span><span class="p">[:,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">labelencoder_X_2</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">X_test</span><span class="p">[:,</span> <span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">labelencoder_X_2</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:,</span> <span class="mi">6</span><span class="p">])</span>
+
+<span class="n">onehotencoder</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">categorical_features</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">onehotencoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+
+<span class="n">onehotencoder</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">categorical_features</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">onehotencoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="422-name属性列的处理">4.2.2	Name属性列的处理</h4>
+
+<p>​			对于名字这一列，有用的信息只有中间的那个头衔。而称号对生存的影响统计如下图:</p>
+
+<p><img src="C:\Users\banshee\Desktop\ML\v2-e45fd8a37464233e23fe526671470582_r.jpg" width="400px" height="300px" /></p>
+
+<p>​								图2:		头衔对存活影响的统计</p>
+
+<p>​			我们可以发现，头衔对于生存概率的影响是存在的，所以根据头衔可以把乘客分为贵宾和普通人，</p>
+
+<p>​		而显然贵宾的存活概率要比普通乘客要大。</p>
+
+<h4 id="423-其他属性的处理">4.2.3	其他属性的处理</h4>
+
+<p>​			在两个实现的py文件中，对以下属性进行了不同的处理:</p>
+
+<p>​				在titanic.py中，SibSp和Parch是直接放入了数据中，而onhot.py中则将两者相加并根据和将</p>
+
+<p>​			  乘客分为了4类:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dataset</span><span class="p">[</span><span class="s">"FamilyS"</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s">"SibSp"</span><span class="p">]</span> <span class="o">+</span> <span class="n">dataset</span><span class="p">[</span><span class="s">"Parch"</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">X_test</span><span class="p">[</span><span class="s">"FamilyS"</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="s">"SibSp"</span><span class="p">]</span> <span class="o">+</span> <span class="n">X_test</span><span class="p">[</span><span class="s">"Parch"</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">family</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">"Single"</span>
+    <span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">"Couple"</span>
+    <span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">"InterM"</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">"Large"</span>
+<span class="n">dataset</span><span class="p">[</span><span class="s">"FamilyS"</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s">"FamilyS"</span><span class="p">]</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">family</span><span class="p">)</span>
+<span class="n">X_test</span><span class="p">[</span><span class="s">"FamilyS"</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="s">"FamilyS"</span><span class="p">]</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">family</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>​				同时也将其编码为one-hot-array形式。而实验结果显示两者之间的差异并不大。</p>
+
+<p>​			Ticket属性和Cabin属性由于难以体现乘客特征和缺失过多故舍去。</p>
+
+<p>​				同时，对于y，同样转变成one-hot-label的形式，即[0,1]和[1,0]。</p>
+
+<hr />
+
+<h3 id="5-算法实现">5.	算法实现</h3>
+
+<h4 id="51-划分训练集和测试机">5.1	划分训练集和测试机</h4>
+
+<p>​		利用sklearn进行数据集的划分:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X_train</span><span class="p">,</span><span class="n">X_val</span><span class="p">,</span><span class="n">Y_train</span><span class="p">,</span><span class="n">Y_val</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">dataset_X</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">(),</span>
+                                                 <span class="n">dataset_Y</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">(),</span>
+                                                <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span>
+                                                <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="52-定义layer参数和输出">5.2	定义layer参数和输出</h4>
+
+<p>​		首先定义训练数据x和label y:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span><span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span><span class="n">name</span> <span class="o">=</span> <span class="s">'input'</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span><span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="n">name</span> <span class="o">=</span> <span class="s">'label'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>​		定义layer的参数和输出:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">weights1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">random_normal</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">]),</span><span class="n">name</span> <span class="o">=</span> <span class="s">'weights1'</span><span class="p">)</span>
+<span class="n">bias1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">7</span><span class="p">]),</span><span class="n">name</span> <span class="o">=</span> <span class="s">'bias1'</span><span class="p">)</span>
+<span class="n">Wx_plus_b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">weights1</span><span class="p">)</span> <span class="o">+</span> <span class="n">bias1</span>
+<span class="n">weights2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">random_normal</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">]),</span><span class="n">name</span> <span class="o">=</span> <span class="s">'weights2'</span><span class="p">)</span>
+<span class="n">bias2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">2</span><span class="p">]),</span><span class="n">name</span> <span class="o">=</span> <span class="s">'bias2'</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">output1</span><span class="p">,</span><span class="n">weights2</span><span class="p">)</span> <span class="o">+</span> <span class="n">bias2</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">keep_prob</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>​		定义训练器和预测输出:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+<p>​		训练时，总共进行50次迭代，每5次迭代进行一次交叉验证:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+        <span class="n">total_loss</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">)):</span>
+            <span class="n">feed_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">X_train</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span><span class="n">y</span><span class="p">:[</span><span class="n">Y_train</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="n">keep_prob</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">}</span>
+            <span class="n">_</span><span class="p">,</span><span class="n">loss</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">train_op</span><span class="p">,</span><span class="n">cost</span><span class="p">],</span><span class="n">feed_dict</span><span class="o">=</span><span class="n">feed_dict</span><span class="p">)</span>
+            <span class="n">total_loss</span> <span class="o">+=</span><span class="n">loss</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Epoch: </span><span class="si">%4</span><span class="s">d, total loss = </span><span class="si">%.12</span><span class="s">f'</span> <span class="o">%</span> <span class="p">(</span><span class="n">epoch</span><span class="p">,</span><span class="n">total_loss</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">accuracy</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">acc_op</span><span class="p">,</span><span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span><span class="n">X_val</span><span class="p">,</span><span class="n">y</span><span class="p">:</span><span class="n">Y_val</span><span class="p">,</span> <span class="n">keep_prob</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">})</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">"Accuracy on validation set: </span><span class="si">%.9</span><span class="s">f"</span> <span class="o">%</span> <span class="n">accuracy</span><span class="p">)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">'training complete!'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>​		训练完后，titanic.py在交叉验证集上的正确率为 0.823，提交结果的正确率为0.779。</p>
+
+<p>​				   onehot.py在交叉验证集上正确率为  0.809， 提交结果为0.762</p>
+
+<h4 id="53-模型优化">5.3	模型优化</h4>
+
+<p>​		在完成上述呈现的模型后，我发现效果并不是那么好。虽然在验证集上正确率到达了0.82，但是结果表</p>
+
+<p>​	     明模型出现了过拟合的现象。为了解决这个问题，则进行以下工作:</p>
+
+<h5 id="531-在隐藏层中进行dropout">5.3.1	在隐藏层中进行dropout</h5>
+
+<p>​			加入dropout后，模型构建改为:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>keep_prob = tf.placeholder(tf.float32)
+Wx_plus_b = tf.matmul(x, weights1) + bias1
+Wx_plus_b = tf.nn.dropout(Wx_plus_b, keep_prob)
+</code></pre></div></div>
+
+<h5 id="532-激活函数和正则化参数">5.3.2	激活函数和正则化参数</h5>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>output1 = tf.nn.relu(Wx_plus_b)  #加入激活函数
+
+cur_cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=y,logits=z))
+tf.add_to_collection('losses', cur_cost)
+cost = tf.add_n(tf.get_collection('losses'))    #加入正则化参数
+</code></pre></div></div>
+
+<p>​		现在再训练模型，titanic.py在交叉验证集上正确率为0.810，提交后正确率为0.795。</p>
+
+<p>​						onhot.py则为别为0.810，0.813</p>
+
+<p><img src="C:\Users\banshee\Desktop\ML\20180612221232.png" width="400px" height="400px" /></p>
+
+<p>​								图3:		程序输出结果</p>
+
+<hr />
+
+<h3 id="6-分析与总结">6.	分析与总结</h3>
+
+<h4 id="61-训练结果分析">6.1	训练结果分析</h4>
+
+<p>​		在加入dropout，激活函数之前，模型出现了较为严重的过拟合现象。但是在优化模型的过程中，发现</p>
+
+<p>​	     对结果的提升十分不明显，可能的原因是数据集比较粗糙，训练数据较少而且噪声较多，使得神经网络等</p>
+
+<p>​	     对数据比较敏感的模型起不到较好的效果。所以这次实验来看，提升预测结果比较有效的途径是改造数据</p>
+
+<p>​	     本身而不是去修改算法模型，比如在添加了头衔特征后，模型的效果有了明显的变化。由于这次实验的</p>
+
+<p>​	     数据集自身限制，常规算法的表现都不会太高，要使算法的正确率达到一个比较高的值，就需要对数据集</p>
+
+<p>​             进行改造，改造后的数据集因素越多，越符合实际情况，算法的效果就会越好，这一点在onehot.py实现</p>
+
+<p>​	      的算法效果更好上可以体现出来。</p>
+
+<h4 id="62-难点与创新点">6.2	难点与创新点</h4>
+
+<p>​		这次实验中，主要面对的难点是：</p>
+
+<ul>
+  <li>数据集中大量的缺失和无法直接用于计算的属性。</li>
+  <li>
+    <p>解决模型产生的过拟合问题</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  主要尝试过的创新有:
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>用随机森林算法补全age的缺失值，因为Age对结果的影响非常显著。</p>
+  </li>
+  <li>
+    <p>把提取出来的头衔利用哈希算法映射到100以内的整数值，但是尝试过后发现这种做法效果</p>
+
+    <p>没有把乘客分为贵宾和普通乘客效果好。</p>
+  </li>
+  <li>把类别相关的属性映射成one-hot-array。</li>
+</ul>
+
+
+                <hr style="visibility: hidden;">
+
+                <ul class="pager">
+                    
+                    
+                </ul>
+
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hux";
+    var disqus_identifier = "/2018/06/10/Titanic";
+    var disqus_url = "http://localhost:4001/2018/06/10/Titanic/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    
+
+
+                    
+                    
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; IT'S A PRESENT 2019
+                    <br>
+                    Theme by Halley</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+<script src="/js/snackbar.js "></script>
+<script src="/js/sw-registration.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-49627206-1';
+    var _gaDomain = '';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+<!-- Side Catalog -->
+
+
+
+<!-- Multi-Lingual -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

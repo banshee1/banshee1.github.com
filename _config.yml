@@ -1,6 +1,6 @@
 # Site settings
 title: oovoo
-SEOTitle: For the Present 
+SEOTitle: For the Present,You live only once.
 header-img: img/main-bg.jpg
 email: fanwj1997@163.com
 description: "FINE"
@@ -12,7 +12,7 @@ port: 4002
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "QQ: 772859197
+sidebar-about-description: "QQ: 772859197 
                               <br>Please feel free to contact me."
 sidebar-avatar: /img/me.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 

@@ -19,6 +19,6 @@ tags:
 
 爱丁堡是一个非常美丽的城市，整个城市就像一座城堡，古老而神秘，随手一拍，都是明信片，真羡慕爱丁堡人民，哼。我住的学校提供的学生宿舍，不仅条件超棒，交通也非常方便，周围超市也很多，离市中心走路也就只有10min，生活非常便捷。这可能是我这辈子能以最低的价格住的最贵的房子啦？
 
-<img src="C:\Users\He Aijia\Documents\GitHub\banshee1.github.com\img\street.jpg" >
+<img src="C:\Users\He Aijia\Documents\GitHub\banshee1.github.com\img\street.jpg"  width="400px" height="300px" />
 
 嗨呀 这周就先写到这里吧 未完待续？

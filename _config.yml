@@ -1,11 +1,10 @@
 # Site settings
 title: oovoo
-SEOTitle: For the Present,You live only once.
+SEOTitle: 咸鱼起航
 header-img: img/main-bg.jpg
 email: fanwj1997@163.com
-  <br>or aijiahe@qq.com
 description: "FINE"
-keyword: "PhD, Future"
+keyword: "programmar"
 url: "http://banshee1.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/banshee1/banshee1.github.com" # you code repository
